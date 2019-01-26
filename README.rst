@@ -2,7 +2,7 @@ socketIO-client-nexus
 ===============
 Here is a `socket.io <http://socket.io>`_ client library for Python.  You can use it to write test code for your socket.io server.
 
-This is a forked version to implement the Socket.io 2.x changes. You can find the original `here <https://github.com/invisibleroads/socketIO-client>`_.
+This forked version includes a hack to facilitate a pure websocket connection to a SocketIO server. You can find the original `here <https://github.com/invisibleroads/socketIO-client>`_.
 
 
 Installation

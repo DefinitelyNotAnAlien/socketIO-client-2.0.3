@@ -51,6 +51,8 @@ class EngineIO(LoggingMixin):
 
         if Namespace:
             self.define(Namespace)
+        self._pure_ws = ('websocket' in self._client_transports
+                         and len(self._client_transports) == 1)
         self._transport
 
     # Connect
@@ -60,7 +62,10 @@ class EngineIO(LoggingMixin):
         if self._opened:
             return self._transport_instance
         self._engineIO_session = self._get_engineIO_session()
-        self._negotiate_transport()
+        if self._pure_ws:
+            self._negotiate_websocket_transport()
+        else:
+            self._negotiate_transport()
         self._connect_namespaces()
         self._opened = True
         self._reset_heartbeat()
@@ -83,6 +88,12 @@ class EngineIO(LoggingMixin):
                 warning_screen.throw(warning)
         assert engineIO_packet_type == 0  # engineIO_packet_type == open
         return parse_engineIO_session(engineIO_packet_data)
+
+    def _negotiate_websocket_transport(self):
+        self._transport_instance = WebsocketTransport(self._http_session,
+                                                      self._is_secure,
+                                                      self._url)
+        self.transport_name = 'websocket'
 
     def _negotiate_transport(self):
         self._transport_instance = self._get_transport('xhr-polling')
