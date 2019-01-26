@@ -1,4 +1,4 @@
-socketIO-client-nexus
+socketIO-client-next
 ===============
 Here is a `socket.io <http://socket.io>`_ client library for Python.  You can use it to write test code for your socket.io server.
 
@@ -18,7 +18,7 @@ Install the package in an isolated environment. ::
     source $VIRTUAL_ENV/bin/activate
 
     # Install package
-    pip install -U socketIO-client-nexus
+    pip install -U socketIO-client-next
 
 
 Usage
@@ -30,8 +30,8 @@ Activate isolated environment. ::
 
 Launch your socket.io server. ::
 
-    cd $(python -c "import os, socketIO_client_nexus;\
-        print(os.path.dirname(socketIO_client_nexus.__file__))")
+    cd $(python -c "import os, socketIO_client_next;\
+        print(os.path.dirname(socketIO_client_next.__file__))")
 
     DEBUG=* node tests/serve.js  # Start socket.io server in terminal one
     DEBUG=* node tests/proxy.js  # Start proxy server in terminal two
@@ -40,12 +40,12 @@ Launch your socket.io server. ::
 For debugging information, run these commands first. ::
 
     import logging
-    logging.getLogger('socketIO-client-nexus').setLevel(logging.DEBUG)
+    logging.getLogger('socketIO-client-next').setLevel(logging.DEBUG)
     logging.basicConfig()
 
 Emit. ::
 
-    from socketIO_client_nexus import SocketIO, LoggingNamespace
+    from socketIO_client_next import SocketIO, LoggingNamespace
 
     with SocketIO('localhost', 8000, LoggingNamespace) as socketIO:
         socketIO.emit('aaa')
@@ -53,7 +53,7 @@ Emit. ::
 
 Emit with callback. ::
 
-    from socketIO_client_nexus import SocketIO, LoggingNamespace
+    from socketIO_client_next import SocketIO, LoggingNamespace
 
     def on_bbb_response(*args):
         print('on_bbb_response', args)
@@ -64,7 +64,7 @@ Emit with callback. ::
 
 Define events. ::
 
-    from socketIO_client_nexus import SocketIO, LoggingNamespace
+    from socketIO_client_next import SocketIO, LoggingNamespace
 
     def on_connect():
         print('connect')
@@ -102,7 +102,7 @@ Define events. ::
 
 Define events in a namespace. ::
 
-    from socketIO_client_nexus import SocketIO, BaseNamespace
+    from socketIO_client_next import SocketIO, BaseNamespace
 
     class Namespace(BaseNamespace):
 
@@ -116,7 +116,7 @@ Define events in a namespace. ::
 
 Define standard events. ::
 
-    from socketIO_client_nexus import SocketIO, BaseNamespace
+    from socketIO_client_next import SocketIO, BaseNamespace
 
     class Namespace(BaseNamespace):
 
@@ -134,7 +134,7 @@ Define standard events. ::
 
 Define different namespaces on a single socket. ::
 
-    from socketIO_client_nexus import SocketIO, BaseNamespace
+    from socketIO_client_next import SocketIO, BaseNamespace
 
     class ChatNamespace(BaseNamespace):
 
@@ -156,7 +156,7 @@ Define different namespaces on a single socket. ::
 
 Connect via SSL (https://github.com/invisibleroads/socketIO-client/issues/54). ::
 
-    from socketIO_client_nexus import SocketIO
+    from socketIO_client_next import SocketIO
 
     # Skip server certificate verification
     SocketIO('https://localhost', verify=False)
@@ -168,7 +168,7 @@ Connect via SSL (https://github.com/invisibleroads/socketIO-client/issues/54). :
 
 Specify params, headers, cookies, proxies thanks to the `requests <http://python-requests.org>`_ library. ::
 
-    from socketIO_client_nexus import SocketIO
+    from socketIO_client_next import SocketIO
     from base64 import b64encode
 
     SocketIO(
@@ -180,7 +180,7 @@ Specify params, headers, cookies, proxies thanks to the `requests <http://python
 
 Wait forever. ::
 
-    from socketIO_client_nexus import SocketIO
+    from socketIO_client_next import SocketIO
 
     socketIO = SocketIO('localhost', 8000)
     socketIO.wait()
