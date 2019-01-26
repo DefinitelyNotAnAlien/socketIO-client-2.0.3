@@ -188,7 +188,7 @@ Wait forever. ::
 Don't wait forever. ::
 
     from requests.exceptions import ConnectionError
-    from socketIO_client_nexus import SocketIO
+    from socketIO_client_next import SocketIO
 
     try:
         socket = SocketIO('localhost', 8000, wait_for_connection=False)
