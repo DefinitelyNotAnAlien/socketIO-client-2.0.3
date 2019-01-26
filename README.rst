@@ -7,27 +7,12 @@ This forked version includes a hack to facilitate a pure websocket connection to
 
 Installation
 ------------
-Install the package in an isolated environment. ::
-
-    VIRTUAL_ENV=$HOME/.virtualenv
-
-    # Prepare isolated environment
-    virtualenv $VIRTUAL_ENV
-
-    # Activate isolated environment
-    source $VIRTUAL_ENV/bin/activate
-
-    # Install package
-    pip install -U socketIO-client-next
+Download or clone this repository.
+Add the folder "socketIO_client_next" to your PATH or to your project folder.
 
 
 Usage
 -----
-Activate isolated environment. ::
-
-    VIRTUAL_ENV=$HOME/.virtualenv
-    source $VIRTUAL_ENV/bin/activate
-
 Launch your socket.io server. ::
 
     cd $(python -c "import os, socketIO_client_next;\
