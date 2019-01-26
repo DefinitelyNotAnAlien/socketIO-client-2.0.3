@@ -8,6 +8,7 @@ This forked version includes a hack to facilitate a pure websocket connection to
 Installation
 ------------
 Download or clone this repository.
+
 Add the folder "socketIO_client_next" to your PATH or to your project folder.
 
 
