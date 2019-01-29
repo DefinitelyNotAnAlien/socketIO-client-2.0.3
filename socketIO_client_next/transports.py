@@ -118,6 +118,10 @@ class WebsocketTransport(AbstractTransport):
         if engineIO_session:
             params['sid'] = engineIO_session.id
             kw['timeout'] = self._timeout = engineIO_session.ping_timeout
+        else:
+            # Define self._timeout if pure websocket is used to prevent
+            # attribute error when using the set_timeout function
+            self._timeout = None
         ws_url = '%s://%s/?%s' % (
             'wss' if is_secure else 'ws', url, format_query(params))
         http_scheme = 'https' if is_secure else 'http'
